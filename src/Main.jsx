@@ -37,7 +37,7 @@ function Main() {
                     </p>
                     <p className="cont2_tit c_orange bold2" data-aos="fade-up" data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="300">주식회사 채움</p>
                     <p className="cont_det c_gry01" data-aos="fade-up" data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="500">차별화된 서비스와 자체 전문인력으로 고퀄리티 사양의 홍보물 제작하여 광고만족도를 제고합니다.</p>
-                    <ul className="icon_wrap dp_sb dp_c" data-aos="fade-up" data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="700">
+                    <ul className="icon_wrap dp_sb dp_c dp_wrap" data-aos="fade-up" data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="700">
                         <li className="dp_f dp_fc dp_c">
                             <img src="./images/red_icon01.png" alt="" />
                             <p className="icon_tit bold2 c_orange">Supermacy</p>
@@ -79,7 +79,7 @@ function Main() {
                 <div className="c_center c_w">
                     <h3 className="cont_tit" data-aos="fade-up" data-aos-easing="ease" data-aos-duration="1000">BUSINESS AREA</h3>
                     <p className="cont_det" data-aos="fade-up" data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="300">기획부터 납품까지 한번에 해결하는 온·오프라인 ONE-STOP 서비스를 제공합니다.</p>
-                    <ul className="busi_icon_wrap dp_sb dp_c" >
+                    <ul className="busi_icon_wrap dp_sb dp_c dp_wrap" >
                         <li data-aos="flip-left" data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="500">
                             <a className="dp_f dp_fc dp_c dp_cc" href="" title="개발계획도 및 위성지도 제작">
                                 <img src="./images/area_icon01.png" alt="" />
