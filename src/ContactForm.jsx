@@ -1,16 +1,91 @@
 import './reset.css';
 import './style.css';
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 export default function ContactForm() {
-    const [form, setForm] = useState({name: '', email: '', placekind: '', q_content: ''});
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setForm({...form, [name] : value });
+    const [formData, setFormData] = useState({
+        name: '', 
+        call: '',
+        email: '', 
+        placekind: '', 
+        q_content: '',
+        agreechk : false
+    });
+
+    const fieldRefs = {
+        name: useRef(null),
+        call: useRef(null),
+        email: useRef(null),
+        placekind: useRef(null),
+        q_content: useRef(null),
+        agreechk: useRef(null)
     };
+
+    useEffect(() => {
+        const formDataArray = Object.entries(formData);
+        for (const [key, value] of formDataArray) {
+        if (value === '') {
+            fieldRefs[key].current.focus();
+            break;
+        }
+        }
+    }, [formData]);
+
+    const handleChange = (e) => {
+        const { id, type, value, checked } = e.target;
+        // 체크박스일 경우 value 대신 checked 값을 사용합니다.
+
+        setFormData((prevData) => ({
+            ...prevData,
+            [id]: type === 'radio' ? checked : value
+        }));
+
+        if (value === '') {
+            fieldRefs[id].current.focus();
+        }
+    };
+
+    
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert(JSON.stringify(form, null, 2))
+
+        //alert(JSON.stringify(form, null, 2))
+
+        // for (const name in form) {
+        //     if (form[name] === '') {
+        //         inputRefs.current[name].focus();
+        //         break;
+        //     } else if (form[placekind] === '') {
+        //         selectRefs.current[placekind].focus();
+        //         break;
+        //     }
+        // }
+
+        // Get form data from state
+        const name = formData.name;
+        const call = formData.call;
+        const email = formData.email;
+        const placekind = formData.placekind;
+        const q_content = formData.q_content;
+
+        // Create new form data object and push to array
+        const newFormData = [...formData];
+        newFormData.push({ name: 'name', value: name });
+        newFormData.push({ name: 'call', value: call });
+        newFormData.push({ name: 'email', value: email });
+        newFormData.push({ name: 'placekind', value: placekind });
+        newFormData.push({ name: 'q_content', value: q_content });
+        setFormData(newFormData);
+
+        // Clear form fields
+        setFormData({
+            name: '',
+            call: '',
+            email: '',
+            placekind: '',
+            q_content: '',
+        });
     };
     return (
         <div className="cont5">
@@ -24,9 +99,10 @@ export default function ContactForm() {
                                 type="text" 
                                 id="name" 
                                 name="name" 
-                                value={form.name} 
+                                value={formData.name} 
                                 onChange={handleChange} 
                                 placeholder="성함을 입력해 주세요." 
+                                ref={fieldRefs.name}
                             />
                         </div>
                         <div className="inputWrap wid50">
@@ -35,9 +111,10 @@ export default function ContactForm() {
                                 type="text" 
                                 id="call" 
                                 name="call" 
-                                value={form.call} 
+                                value={formData.call} 
                                 onChange={handleChange} 
                                 placeholder="연락처를 입력해 주세요." 
+                                ref={fieldRefs.call}
                             />
                         </div>
                         <div className="inputWrap wid50">
@@ -46,15 +123,25 @@ export default function ContactForm() {
                                 type="email" 
                                 id="email" 
                                 name="email" 
-                                value={form.email} 
+                                value={formData.email} 
                                 onChange={handleChange} 
                                 placeholder="이메일을 입력해 주세요." 
+                                ref={fieldRefs.email}
                             />
                         </div>
                         <div className="inputWrap wid50">
                             <label htmlFor="placekind">현장종류<span className="c_orange">*</span></label>
-                            <select name="placekind" id="placekind">
+                            <select 
+                                name="placekind" 
+                                id="placekind" 
+                                value={formData.placekind} 
+                                onChange={handleChange} 
+                                ref={fieldRefs.placekind}
+                            >
                                 <option value="">선택</option>
+                                <option value="option1">기타</option>
+                                <option value="option2">기타</option>
+                                <option value="option3">기타</option>
                             </select>
                         </div>
                         <div className="inputWrap">
@@ -63,9 +150,10 @@ export default function ContactForm() {
                                 type="text" 
                                 id="q_content"
                                 name="q_content" 
-                                value={form.q_content} 
+                                value={formData.q_content} 
                                 onChange={handleChange} 
                                 placeholder="문의 내용을 입력해 주세요." 
+                                ref={fieldRefs.q_content}
                             />
                         </div>
                         <div className="agree_info">
@@ -76,7 +164,15 @@ export default function ContactForm() {
                             </p>
                         </div>
                         <div className="inputWrap dp_f dp_c radio_input">
-                            <input className="dp_f dp_c" type="radio" id="agreechk" name="" value="" />
+                            <input 
+                                className="dp_f dp_c" 
+                                type="radio" 
+                                id="agreechk" 
+                                name="agreechk" 
+                                checked={formData.isChecked} 
+                                onChange={handleChange}
+                                ref={fieldRefs.agreechk}
+                            />
                             <label htmlFor="agreechk">동의합니다.</label>
                         </div>
                     </div>
