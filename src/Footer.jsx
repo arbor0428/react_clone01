@@ -15,13 +15,13 @@ function Footer() {
                 <div className="com_info_wrap">
                     <ul className="dp_f dp_c dp_end02 bold c_gry01">
                         <li className="dp_f dp_c">주식회사 채움</li>
-                        <li className="dp_f dp_c">대표자 : 신현준</li>
-                        <li className="dp_f dp_c">주소 : 경기도 오산시 수청로8번길 45, 2층 (수청동)</li>
+                        <li className="dp_f dp_c">대표자 : 테스트</li>
+                        <li className="dp_f dp_c">주소 : 경기도 테스트시 테스트1번길 45, 1층 (테스트동)</li>
                     </ul>
                     <ul className="dp_f dp_c dp_end02 bold c_gry01">
-                        <li className="dp_f dp_c">사업자등록번호 : 829-88-00132</li>
-                        <li className="dp_f dp_c">대표전화 : 1599-7807</li>
-                        <li className="dp_f dp_c">이메일 : shk1123kr@naver.com </li>
+                        <li className="dp_f dp_c">사업자등록번호 : 000-0000-0000</li>
+                        <li className="dp_f dp_c">대표전화 : 0000-0000</li>
+                        <li className="dp_f dp_c">이메일 : hannah1155@naver.com </li>
                     </ul>
                     <p className="copyright c_gry02 bold">COPYRIGHT © 2023 CHAEUM. ALL RIGHTS RESERVED.</p>
                 </div>
